@@ -7,6 +7,7 @@ import contrib.utils.components.item.ItemClassification;
 import contrib.utils.components.item.ItemData;
 
 import core.Entity;
+import core.utils.SoundPlayer;
 
 import dslToGame.AnimationBuilder;
 
@@ -47,5 +48,6 @@ public class HealthPotion extends ItemData implements IOnUse {
                         healthComponent.getCurrentHealthpoints() + healingAmount,
                         healthComponent.getMaximalHealthpoints()));
         inventoryComponent.removeItem(item);
+        SoundPlayer.play("sounds/items/potion.mp3");
     }
 }

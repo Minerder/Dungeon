@@ -6,12 +6,12 @@ import core.Entity;
 import core.components.DrawComponent;
 import core.components.PositionComponent;
 import core.utils.Point;
+import core.utils.SoundPlayer;
 import core.utils.components.draw.Animation;
 
 import dslToGame.AnimationBuilder;
 
 public class Lever extends Entity {
-
     private boolean pressed;
     private final Animation activated;
     private final DrawComponent dc;
@@ -39,6 +39,7 @@ public class Lever extends Entity {
 
     private void setActivated() {
         if (dc != null) dc.setCurrentAnimation(activated);
+        SoundPlayer.play("sounds/traps/lever.mp3");
     }
 
     private void setupPositionComponent() {

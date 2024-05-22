@@ -11,6 +11,7 @@ import contrib.utils.components.stats.DamageModifier;
 import core.Entity;
 import core.Game;
 import core.utils.Point;
+import core.utils.SoundPlayer;
 import core.utils.components.draw.Animation;
 
 import java.util.List;
@@ -258,6 +259,7 @@ public class ItemData {
                                                 });
                             }
                         });
+        SoundPlayer.play("sounds/items/collect.mp3");
     }
 
     /**

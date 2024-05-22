@@ -7,6 +7,7 @@ import contrib.entities.EntityFactory;
 import core.Game;
 import core.System;
 import core.components.PositionComponent;
+import core.utils.SoundPlayer;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +18,6 @@ import java.awt.event.WindowListener;
 import javax.swing.*;
 
 public class GameOverScreen implements ActionListener, WindowListener {
-
     private final JButton btnQuit, btnRestart;
     private final JFrame frame;
 
@@ -61,6 +61,7 @@ public class GameOverScreen implements ActionListener, WindowListener {
         panel.add(panelButton, BorderLayout.SOUTH);
         frame.add(panel);
         frame.setVisible(true);
+        SoundPlayer.play("sounds/gameover/game_over.mp3");
     }
 
     @Override

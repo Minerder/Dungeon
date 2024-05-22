@@ -19,6 +19,7 @@ import contrib.utils.components.skill.skills.HomingSparkSkill;
 import core.Entity;
 import core.Game;
 import core.utils.Point;
+import core.utils.SoundPlayer;
 import core.utils.components.draw.Animation;
 
 import dslToGame.AnimationBuilder;
@@ -26,7 +27,6 @@ import dslToGame.AnimationBuilder;
 import java.util.Random;
 
 public class Book extends ItemData implements IOnDrop, IOnCollect {
-
     /**
      * Creates a new random book with respect to the current level of hero.
      *
@@ -134,6 +134,7 @@ public class Book extends ItemData implements IOnDrop, IOnCollect {
             skillComponent.setSkill(item.getItemData().getSkill(), 2);
             Game.removeEntity(WorldItemEntity);
         }
+        SoundPlayer.play("sounds/items/collect.mp3");
     }
 
     /**

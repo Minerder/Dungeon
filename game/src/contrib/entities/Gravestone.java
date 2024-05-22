@@ -10,6 +10,7 @@ import core.Game;
 import core.components.DrawComponent;
 import core.components.PlayerComponent;
 import core.components.PositionComponent;
+import core.utils.SoundPlayer;
 
 import dslToGame.AnimationBuilder;
 
@@ -51,6 +52,7 @@ public class Gravestone extends Entity {
 
                             Game.removeEntity(this);
                             Game.removeEntity(Ghost.getInstance());
+                            SoundPlayer.play("sounds/items/potion.mp3");
                         }
                     }
                 },

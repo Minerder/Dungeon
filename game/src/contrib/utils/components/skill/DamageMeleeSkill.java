@@ -12,14 +12,15 @@ import core.components.DrawComponent;
 import core.components.PositionComponent;
 import core.utils.Constants;
 import core.utils.Point;
+import core.utils.SoundPlayer;
 import core.utils.components.MissingComponentException;
 import core.utils.components.draw.Animation;
 
 import dslToGame.AnimationBuilder;
 
 public class DamageMeleeSkill implements ISkillFunction, IUpdateFunction {
-
     private final String pathToTexturesOfProjectile;
+    private final String pathToSoundsOfProjectile;
     private final Damage projectileDamage;
     private final Point projectileHitboxSize;
     private final ITargetSelection selectionFunction;
@@ -32,10 +33,12 @@ public class DamageMeleeSkill implements ISkillFunction, IUpdateFunction {
 
     public DamageMeleeSkill(
             String pathToTexturesOfProjectile,
+            String pathToSoundsOfProjectile,
             Damage projectileDamage,
             Point projectileHitboxSize,
             ITargetSelection selectionFunction) {
         this.pathToTexturesOfProjectile = pathToTexturesOfProjectile;
+        this.pathToSoundsOfProjectile = pathToSoundsOfProjectile;
         this.projectileDamage = projectileDamage;
         this.projectileHitboxSize = projectileHitboxSize;
         this.selectionFunction = selectionFunction;
@@ -81,6 +84,7 @@ public class DamageMeleeSkill implements ISkillFunction, IUpdateFunction {
                                         });
                     }
                 };
+        SoundPlayer.play(pathToSoundsOfProjectile);
 
         new CollideComponent(
                 projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);

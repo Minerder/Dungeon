@@ -11,6 +11,7 @@ public class HomingSparkSkill extends DamageProjectileSkill {
     public HomingSparkSkill(ITargetSelection selectionFunction) {
         super(
                 "skills/spark/right",
+                "sounds/skills/spark.mp3",
                 0.5f,
                 new Damage(1, DamageType.MAGIC, null),
                 new Point(0.5f, 0.5f),

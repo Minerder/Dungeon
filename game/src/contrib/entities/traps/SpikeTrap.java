@@ -5,9 +5,9 @@ import contrib.components.HealthComponent;
 
 import core.components.PlayerComponent;
 import core.utils.Point;
+import core.utils.SoundPlayer;
 
 public class SpikeTrap extends Trap {
-
     private boolean activated;
     private final Lever lever;
 
@@ -39,6 +39,7 @@ public class SpikeTrap extends Trap {
                     }
                     activated = true;
                     setActivationAnimation();
+                    SoundPlayer.play("sounds/traps/spike.mp3");
                 },
                 null);
     }

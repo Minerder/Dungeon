@@ -14,11 +14,11 @@ import core.Game;
 import core.components.PositionComponent;
 import core.components.VelocityComponent;
 import core.utils.Point;
+import core.utils.SoundPlayer;
 
 import java.util.HashMap;
 
 public class FrostNovaSkill extends Entity implements ISkillFunction, IUpdateFunction {
-
     private final ITargetSelection targetSelection;
     private static final HashMap<Integer, Entity> entities = new HashMap<>();
     private float holdingTimeInFrames;
@@ -45,6 +45,7 @@ public class FrostNovaSkill extends Entity implements ISkillFunction, IUpdateFun
                 }
             }
         }
+        SoundPlayer.play("sounds/skills/frostNova.mp3");
     }
 
     private void createFrostNova(Point pos) {

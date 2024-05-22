@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 
 import core.Game;
 import core.components.PositionComponent;
+import core.utils.SoundPlayer;
 
 public class InventorySlotSource extends DragAndDrop.Source {
     private final InventorySlot inventorySlot;
@@ -42,6 +43,7 @@ public class InventorySlotSource extends DragAndDrop.Source {
         // add the drag actor to the stage
         InventoryGUI.getInstance().getInventoryWindow().getParent().addActor(actor);
         dragAndDrop.setDragActorPosition(actor.getWidth() / 2, -actor.getHeight() / 2);
+        SoundPlayer.play("sounds/items/collect.mp3");
         return payload;
     }
 
@@ -74,6 +76,7 @@ public class InventorySlotSource extends DragAndDrop.Source {
             } else {
                 inventorySlot.add(payload.getDragActor());
             }
+            SoundPlayer.play("sounds/items/collect.mp3");
         }
     }
 

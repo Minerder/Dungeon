@@ -7,6 +7,7 @@ import contrib.utils.components.item.ItemClassification;
 import contrib.utils.components.item.ItemData;
 
 import core.Entity;
+import core.utils.SoundPlayer;
 
 import dslToGame.AnimationBuilder;
 
@@ -47,5 +48,6 @@ public class ManaPotion extends ItemData implements IOnUse {
                         skillComponent.getCurrentMana() + recoverAmount,
                         skillComponent.getMaxMana()));
         inventoryComponent.removeItem(item);
+        SoundPlayer.play("sounds/items/potion.mp3");
     }
 }

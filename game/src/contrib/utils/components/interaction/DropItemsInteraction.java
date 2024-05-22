@@ -7,6 +7,7 @@ import contrib.utils.components.item.ItemData;
 import core.Entity;
 import core.components.*;
 import core.utils.Point;
+import core.utils.SoundPlayer;
 import core.utils.components.MissingComponentException;
 
 import java.util.List;
@@ -28,7 +29,6 @@ import java.util.stream.IntStream;
  * DrawComponent#idleRight} animation will be set as the current animation.
  */
 public class DropItemsInteraction implements IInteraction {
-
     /**
      * Will drop all the items inside the {@link InventoryComponent} of the associated entity on the
      * floor.
@@ -72,6 +72,7 @@ public class DropItemsInteraction implements IInteraction {
         entity.getComponent(DrawComponent.class)
                 .map(DrawComponent.class::cast)
                 .ifPresent(x -> x.setCurrentAnimation(x.getIdleRight()));
+        SoundPlayer.play("sounds/items/open_chest.mp3");
     }
 
     /**

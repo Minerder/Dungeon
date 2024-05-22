@@ -14,10 +14,10 @@ import core.components.VelocityComponent;
 import core.utils.Point;
 
 public class GravityStormSkill extends DamageProjectileSkill implements IUpdateFunction {
-
     public GravityStormSkill(ITargetSelection selectionFunction) {
         super(
                 "skills/gravityStorm",
+                "sounds/skills/gravity.mp3",
                 0.05f,
                 new Damage(0, DamageType.PHYSICAL, null),
                 new Point(0.5f, 0.5f),

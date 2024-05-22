@@ -11,6 +11,7 @@ public class FireballSkill extends DamageProjectileSkill {
     public FireballSkill(ITargetSelection targetSelection) {
         super(
                 "skills/fireball/fireBall_Down/",
+                "sounds/skills/fireball.mp3",
                 0.5f,
                 new Damage(1, DamageType.FIRE, null),
                 new Point(0.5f, 0.5f),

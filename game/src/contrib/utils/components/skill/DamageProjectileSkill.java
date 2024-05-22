@@ -13,6 +13,7 @@ import core.components.DrawComponent;
 import core.components.PositionComponent;
 import core.components.VelocityComponent;
 import core.utils.Point;
+import core.utils.SoundPlayer;
 import core.utils.components.MissingComponentException;
 import core.utils.components.draw.Animation;
 
@@ -21,6 +22,7 @@ import dslToGame.AnimationBuilder;
 public abstract class DamageProjectileSkill implements ISkillFunction {
 
     private final String pathToTexturesOfProjectile;
+    private final String pathToSoundsOfProjectile;
     private final float projectileSpeed;
     private final float projectileRange;
     private final Damage projectileDamage;
@@ -31,6 +33,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction {
 
     public DamageProjectileSkill(
             String pathToTexturesOfProjectile,
+            String pathToSoundsOfProjectile,
             float projectileSpeed,
             Damage projectileDamage,
             Point projectileHitboxSize,
@@ -38,6 +41,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction {
             float projectileRange,
             int bounceAmount) {
         this.pathToTexturesOfProjectile = pathToTexturesOfProjectile;
+        this.pathToSoundsOfProjectile = pathToSoundsOfProjectile;
         this.projectileDamage = projectileDamage;
         this.projectileSpeed = projectileSpeed;
         this.projectileRange = projectileRange;
@@ -48,12 +52,14 @@ public abstract class DamageProjectileSkill implements ISkillFunction {
 
     public DamageProjectileSkill(
             String pathToTexturesOfProjectile,
+            String pathToSoundsOfProjectile,
             float projectileSpeed,
             Damage projectileDamage,
             Point projectileHitboxSize,
             ITargetSelection selectionFunction,
             float projectileRange) {
         this.pathToTexturesOfProjectile = pathToTexturesOfProjectile;
+        this.pathToSoundsOfProjectile = pathToSoundsOfProjectile;
         this.projectileDamage = projectileDamage;
         this.projectileSpeed = projectileSpeed;
         this.projectileRange = projectileRange;
@@ -104,6 +110,7 @@ public abstract class DamageProjectileSkill implements ISkillFunction {
                                         });
                     }
                 };
+        SoundPlayer.play(pathToSoundsOfProjectile);
 
         new CollideComponent(
                 projectile, new Point(0.25f, 0.25f), projectileHitboxSize, collide, null);

@@ -10,6 +10,7 @@ import contrib.utils.components.health.IOnDeathFunction;
 import core.Component;
 import core.Entity;
 import core.systems.DrawSystem;
+import core.utils.SoundPlayer;
 import core.utils.components.draw.Animation;
 import core.utils.logging.CustomLogLevel;
 
@@ -39,7 +40,7 @@ import java.util.logging.Logger;
  *
  * <p>Finally, the HealthComponent provides the ability to set animations for the entity to be
  * played when it is hit or dies. These animations can be set via the {@link
- * #setGetHitAnimation(Animation) setGetHitAnimation} and {@link #setDieAnimation(Animation)
+ * #setGetHitAnimation(Animation) setGetHitAnimation} and {@link #setDeathAnimation(Animation)
  * setDieAnimation} methods and are played by the {@link DrawSystem DrawSystem} automatically.
  */
 @DSLType(name = "health_component")
@@ -107,11 +108,13 @@ public class HealthComponent extends Component {
     public void receiveHit(Damage damage) {
         damageToGet.add(damage);
         this.lastCause = damage.cause() != null ? damage.cause() : this.lastCause;
+        SoundPlayer.playPanned("sounds/entity/entity_hit.mp3", entity);
     }
 
     /** Triggers the onDeath Function */
     public void triggerOnDeath() {
         onDeath.onDeath(entity);
+        SoundPlayer.playPanned("sounds/entity/entity_death.mp3", entity);
     }
 
     /**

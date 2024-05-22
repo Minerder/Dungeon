@@ -12,12 +12,12 @@ import core.Game;
 import core.System;
 import core.systems.PlayerSystem;
 import core.utils.Constants;
+import core.utils.SoundPlayer;
 import core.utils.controller.ScreenController;
 
 import java.util.List;
 
 public class InventoryGUI<T extends Actor> extends ScreenController<T> {
-
     private static final InventoryGUI<Actor> instance = new InventoryGUI<>(new SpriteBatch());
     private final Window inventory;
     private final DragAndDrop dragAndDrop;
@@ -200,6 +200,7 @@ public class InventoryGUI<T extends Actor> extends ScreenController<T> {
                     if (s instanceof PlayerSystem) return;
                     s.stop();
                 });
+        SoundPlayer.play("sounds/items/open_inventory.mp3");
     }
 
     private void closeInventory() {

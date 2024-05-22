@@ -16,6 +16,7 @@ import contrib.utils.components.skill.skills.MeeleSwordSkill;
 import core.Entity;
 import core.Game;
 import core.components.PositionComponent;
+import core.utils.SoundPlayer;
 import core.utils.components.draw.Animation;
 
 import dslToGame.AnimationBuilder;
@@ -23,7 +24,6 @@ import dslToGame.AnimationBuilder;
 import java.util.Random;
 
 public class Sword extends ItemData implements IOnCollect {
-
     private int swordTypeNumber = -1;
 
     /**
@@ -125,5 +125,6 @@ public class Sword extends ItemData implements IOnCollect {
         WorldItemBuilder.buildWorldItem(
                 inventoryComponent.getEquipment(), positionComponent.getPosition());
         inventoryComponent.setEquipment(item.getItemData());
+        SoundPlayer.play("sounds/items/collect.mp3");
     }
 }
